@@ -13,12 +13,12 @@ namespace DrawingShapes.ShapeFactories
         }
         public IShape Create(int x, int y)
         {
-            return new DraggableRound(x, y, 50, 50);
+            return new DraggableRound(x, y, 50, 50, Color.Red);
         }
 
-        public IShape Create(int x, int y, int width, int height)
+        public IShape Create(int x, int y, int width, int height, Color color)
         {
-            return new DraggableRound(x, y, width, height);
+            return new DraggableRound(x, y, width, height, color);
         }
 
         public string Name()

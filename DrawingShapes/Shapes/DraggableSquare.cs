@@ -5,12 +5,14 @@ namespace DrawingShapes.Shapes
 {
     class DraggableSquare : IDraggableShape
     {
-        public DraggableSquare(int x, int y, int width, int height)
+        public DraggableSquare(int x, int y, int width, int height, Color color)
         {
+            Color = color;
             Point = new Point(x, y);
             Size = new Size(width, height);
         }
 
+        public Color Color { get; set; }
         public Point Point { get; set; }
         public Size Size { get; set; }
         public bool Preview { get; set; }
@@ -30,13 +32,15 @@ namespace DrawingShapes.Shapes
 
         public void Draw(Graphics g)
         {
-            g.FillRectangle(Brushes.Blue,new Rectangle(Point, Size));
-
-            if (Selected)
+            using (var brush = new SolidBrush(Color))
             {
-                g.DrawRectangle(Pens.Red, new Rectangle(Point, Size));
+                g.FillRectangle(brush, new Rectangle(Point, Size));
+
+                if (Selected)
+                {
+                    g.DrawRectangle(Pens.Red, new Rectangle(Point, Size));
+                }
             }
-            
         }
 
         private static Rectangle CreateNewShape(Point start, Point end)

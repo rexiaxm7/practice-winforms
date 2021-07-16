@@ -1,4 +1,5 @@
-﻿using DrawingShapes.Shapes;
+﻿using System.Drawing;
+using DrawingShapes.Shapes;
 
 namespace DrawingShapes.ShapeFactories
 {
@@ -6,6 +7,6 @@ namespace DrawingShapes.ShapeFactories
     {
         IShape Create(int x, int y);
 
-        IShape Create(int x, int y, int width, int height);
+        IShape Create(int x, int y, int width, int height, Color color);
     }
 }

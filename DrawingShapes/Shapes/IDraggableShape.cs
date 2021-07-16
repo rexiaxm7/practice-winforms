@@ -4,6 +4,8 @@ namespace DrawingShapes.Shapes
 {
     public interface IDraggableShape : IDeletableShape
     {
+        Color Color { get; set; }
+
         Point Point { get; set; }
 
         Size Size { get; set; }

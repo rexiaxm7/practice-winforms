@@ -6,21 +6,26 @@ namespace DrawingShapes.Shapes
 {
     class DraggableRound : IDraggableShape
     {
-        public DraggableRound(int x, int y, int width, int height)
+        public DraggableRound(int x, int y, int width, int height, Color color)
         {
+            Color = color;
             Point = new Point(x, y);
             Size = new Size(width, height);
         }
 
         public void Draw(Graphics g)
         {
-            g.FillEllipse(Brushes.Yellow, new Rectangle(Point, Size));
-            if (Selected)
+            using (var brush = new SolidBrush(Color))
             {
-                g.DrawEllipse(Pens.Red, new Rectangle(Point, Size));
+                g.FillEllipse(brush, new Rectangle(Point, Size));
+                if (Selected)
+                {
+                    g.DrawEllipse(Pens.Red, new Rectangle(Point, Size));
+                }
             }
         }
 
+        public Color Color { get; set; }
         public Point Point { get; set; }
         public Size Size { get; set; }
         public bool Preview { get; set; }

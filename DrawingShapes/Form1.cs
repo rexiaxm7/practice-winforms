@@ -5,7 +5,6 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using DrawingShapes.ColorSelector;
 using DrawingShapes.ShapeFactories;
 using DrawingShapes.Shapes;
 
@@ -28,12 +27,6 @@ namespace DrawingShapes
 
             InitializeComponent();
             RegisterShapeRadioButton();
-            RegisterColorsPanel();
-        }
-
-        private void RegisterColorsPanel()
-        {
-
         }
 
         private void InitializeBackGround()
@@ -164,7 +157,7 @@ namespace DrawingShapes
                     .Select(item => item.ShapeFactory)
                     .First();
 
-                if (selectedShapeFactory.Create(e.X, e.Y, 0, 0) is IDraggableShape shape)
+                if (selectedShapeFactory.Create(e.X, e.Y, 0, 0, colorLabel.BackColor) is IDraggableShape shape)
                 {
                     shape.Preview = true;
                     _shapes.Add(shape);
@@ -263,6 +256,18 @@ namespace DrawingShapes
         private void DrawingShapesForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void colorsButton_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                colorLabel.BackColor = colorDialog1.Color;
+            }
+
+            using (Brush brush = new SolidBrush(colorLabel.BackColor))
+            {
+            }
         }
     }
 }

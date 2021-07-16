@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using DrawingShapes.ColorSelector;
 using DrawingShapes.Shapes;
 
@@ -20,6 +21,11 @@ namespace DrawingShapes.ShapeFactories
         public IShape Create(int x, int y)
         {
             return new OriginalShape(x, y);
+        }
+
+        public IShape Create(int x, int y, int width, int height, Color color)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IShape Create(int x, int y, int width, int height)

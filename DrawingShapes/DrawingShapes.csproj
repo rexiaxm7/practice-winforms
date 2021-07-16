@@ -73,6 +73,7 @@
     <Compile Include="Shapes\BackGroundTile.cs" />
     <Compile Include="Shapes\DraggableRound.cs" />
     <Compile Include="Shapes\DraggableSquare.cs" />
+    <Compile Include="Shapes\DraggableTriangle.cs" />
     <Compile Include="Shapes\IDeletableShape.cs" />
     <Compile Include="Shapes\IDraggableShape.cs" />
     <Compile Include="Shapes\IShape.cs" />

@@ -35,6 +35,8 @@ namespace DrawingShapes
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.colorLabel = new System.Windows.Forms.Label();
+            this.colorsButton = new System.Windows.Forms.Button();
             this.allDeleteButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
@@ -42,6 +44,7 @@ namespace DrawingShapes
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,6 +65,8 @@ namespace DrawingShapes
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel1.Controls.Add(this.colorLabel);
+            this.splitContainer1.Panel1.Controls.Add(this.colorsButton);
             this.splitContainer1.Panel1.Controls.Add(this.allDeleteButton);
             this.splitContainer1.Panel1.Controls.Add(this.panel1);
             // 
@@ -69,13 +74,32 @@ namespace DrawingShapes
             // 
             this.splitContainer1.Panel2.Controls.Add(this.mainPictureBox);
             this.splitContainer1.Size = new System.Drawing.Size(784, 537);
+            this.splitContainer1.SplitterDistance = 40;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // colorLabel
+            // 
+            this.colorLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorLabel.Location = new System.Drawing.Point(585, 10);
+            this.colorLabel.Name = "colorLabel";
+            this.colorLabel.Size = new System.Drawing.Size(20, 20);
+            this.colorLabel.TabIndex = 7;
+            // 
+            // colorsButton
+            // 
+            this.colorsButton.Location = new System.Drawing.Point(616, 10);
+            this.colorsButton.Name = "colorsButton";
+            this.colorsButton.Size = new System.Drawing.Size(75, 20);
+            this.colorsButton.TabIndex = 6;
+            this.colorsButton.Text = "色選択";
+            this.colorsButton.UseVisualStyleBackColor = true;
+            this.colorsButton.Click += new System.EventHandler(this.colorsButton_Click);
             // 
             // allDeleteButton
             // 
-            this.allDeleteButton.Location = new System.Drawing.Point(697, 14);
+            this.allDeleteButton.Location = new System.Drawing.Point(697, 10);
             this.allDeleteButton.Name = "allDeleteButton";
-            this.allDeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.allDeleteButton.Size = new System.Drawing.Size(75, 20);
             this.allDeleteButton.TabIndex = 4;
             this.allDeleteButton.Text = "削除";
             this.allDeleteButton.UseVisualStyleBackColor = true;
@@ -89,7 +113,7 @@ namespace DrawingShapes
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(0, 50);
+            this.panel1.Size = new System.Drawing.Size(0, 40);
             this.panel1.TabIndex = 3;
             // 
             // mainPictureBox
@@ -172,6 +196,9 @@ namespace DrawingShapes
         private ToolStripMenuItem FileToolStripMenuItem;
         private ToolStripMenuItem FileSaveToolStripMenuItem;
         private SaveFileDialog saveFileDialog1;
+        private Button colorsButton;
+        private ColorDialog colorDialog1;
+        private Label colorLabel;
     }
 }
 

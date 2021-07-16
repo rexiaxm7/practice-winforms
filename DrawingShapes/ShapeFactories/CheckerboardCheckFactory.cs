@@ -1,4 +1,5 @@
-﻿using DrawingShapes.Shapes;
+﻿using System.Drawing;
+using DrawingShapes.Shapes;
 
 namespace DrawingShapes.ShapeFactories
 {
@@ -19,6 +20,11 @@ namespace DrawingShapes.ShapeFactories
         public IShape Create(int x, int y)
         {
             return new CheckerboardCheck(x, y, _widthCanvas, _heightCanvas, _tileSize);
+        }
+
+        public IShape Create(int x, int y, int width, int height, Color color)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IShape Create(int x, int y, int width, int height)
