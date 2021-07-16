@@ -22,7 +22,8 @@ namespace DrawingShapes
             _shapeFactories = new ISelectableShapeFactory[]
             {
                 new DraggableRoundFactory("楕円形"),
-                new DraggableSquareFactory("四角形")
+                new DraggableSquareFactory("四角形"),
+                new DraggableTriangleFactory("三角形")
             };
 
             InitializeComponent();

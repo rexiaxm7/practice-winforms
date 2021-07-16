@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace DrawingShapes.Shapes
 {
@@ -13,13 +15,24 @@ namespace DrawingShapes.Shapes
         public void Draw(Graphics g)
         {
             using (var brush = new SolidBrush(Color))
+            using (var triangle = new GraphicsPath())
             {
-                g.FillEllipse(brush, new Rectangle(Point, Size));
+                triangle.AddPolygon(CalcTrianglePoints());
+                g.FillPath(brush,triangle);
                 if (Selected)
                 {
-                    g.DrawEllipse(Pens.Red, new Rectangle(Point, Size));
+                    g.DrawPath(Pens.Red, triangle);
                 }
             }
+        }
+
+        private Point[] CalcTrianglePoints()
+        {
+            var top = new Point(Point.X + Size.Width / 2, Point.Y);
+            var left = new Point(Point.X, Point.Y + Size.Height);
+            var right = Point.Add(Point, Size);
+
+            return new Point[] { top, left, right };
         }
 
         public Color Color { get; set; }
@@ -29,12 +42,29 @@ namespace DrawingShapes.Shapes
         public bool Selected { get; set; }
         public bool Contains(int x, int y)
         {
-            throw new System.NotImplementedException();
+            using (var triangle = new GraphicsPath())
+            {
+                triangle.AddPolygon(CalcTrianglePoints());
+                return triangle.IsVisible(x, y);
+            }
         }
 
         public void Resize(Point start, Point end)
         {
-            throw new System.NotImplementedException();
+            var newShape = CreateNewShape(start, end);
+            Point = newShape.Location;
+            Size = newShape.Size;
+        }
+
+        private static Rectangle CreateNewShape(Point start, Point end)
+        {
+            var maxX = Math.Max(start.X, end.X);
+            var minX = Math.Min(start.X, end.X);
+            var maxY = Math.Max(start.Y, end.Y);
+            var minY = Math.Min(start.Y, end.Y);
+            var newShape = Rectangle.FromLTRB(minX, minY, maxX, maxY);
+
+            return newShape;
         }
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="ShapeFactories\CheckerboardCheckFactory.cs" />
     <Compile Include="ShapeFactories\DraggableRoundFactory.cs" />
     <Compile Include="ShapeFactories\DraggableSquareFactory.cs" />
+    <Compile Include="ShapeFactories\DraggableTriangleFactory.cs" />
     <Compile Include="ShapeFactories\ISelectableShapeFactory.cs" />
     <Compile Include="ShapeFactories\IShapeFactory.cs" />
     <Compile Include="ColorSelector\OrderColorSelector.cs" />
