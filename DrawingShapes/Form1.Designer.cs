@@ -83,13 +83,13 @@ namespace DrawingShapes
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(0, 0);
+            this.panel1.Size = new System.Drawing.Size(0, 50);
             this.panel1.TabIndex = 3;
             // 
             // mainPictureBox
@@ -102,7 +102,6 @@ namespace DrawingShapes
             this.mainPictureBox.TabIndex = 0;
             this.mainPictureBox.TabStop = false;
             this.mainPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPictureBox_Paint);
-            this.mainPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseClick);
             this.mainPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseDown);
             this.mainPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseMove);
             this.mainPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseUp);
@@ -129,7 +128,7 @@ namespace DrawingShapes
             // 
             this.FileSaveToolStripMenuItem.Name = "FileSaveToolStripMenuItem";
             this.FileSaveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.FileSaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.FileSaveToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.FileSaveToolStripMenuItem.Text = "保存(&S)";
             this.FileSaveToolStripMenuItem.Click += new System.EventHandler(this.FileSaveToolStripMenuItem_Click);
             // 
@@ -149,6 +148,7 @@ namespace DrawingShapes
             this.Name = "DrawingShapesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DrawingShapes";
+            this.Load += new System.EventHandler(this.DrawingShapesForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

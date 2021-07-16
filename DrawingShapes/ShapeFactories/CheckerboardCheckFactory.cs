@@ -20,5 +20,10 @@ namespace DrawingShapes.ShapeFactories
         {
             return new CheckerboardCheck(x, y, _widthCanvas, _heightCanvas, _tileSize);
         }
+
+        public IShape Create(int x, int y, int width, int height)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

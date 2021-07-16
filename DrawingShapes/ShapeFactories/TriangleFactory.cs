@@ -26,5 +26,10 @@ namespace DrawingShapes.ShapeFactories
 
             return new Triangle(brush, x, y);
         }
+
+        public IShape Create(int x, int y, int width, int height)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

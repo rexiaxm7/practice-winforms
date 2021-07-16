@@ -1,14 +1,24 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace DrawingShapes.Shapes
 {
-    class DraggableSquare : IDraggableShape
+    class DraggableRound : IDraggableShape
     {
-        public DraggableSquare(int x, int y, int width, int height)
+        public DraggableRound(int x, int y, int width, int height)
         {
             Point = new Point(x, y);
             Size = new Size(width, height);
+        }
+
+        public void Draw(Graphics g)
+        {
+            g.FillEllipse(Brushes.Yellow, new Rectangle(Point, Size));
+            if (Selected)
+            {
+                g.DrawEllipse(Pens.Red, new Rectangle(Point, Size));
+            }
         }
 
         public Point Point { get; set; }
@@ -17,8 +27,12 @@ namespace DrawingShapes.Shapes
         public bool Selected { get; set; }
         public bool Contains(int x, int y)
         {
-            var rectangle = new Rectangle(location:Point, size:Size);
-            return rectangle.Contains(x, y);
+            using (var ellipse = new GraphicsPath())
+            {
+                ellipse.AddEllipse(new Rectangle(Point, Size));
+
+                return ellipse.IsVisible(x, y);
+            }
         }
 
         public void Resize(Point start, Point end)
@@ -26,17 +40,6 @@ namespace DrawingShapes.Shapes
             var newShape = CreateNewShape(start, end);
             Point = newShape.Location;
             Size = newShape.Size;
-        }
-
-        public void Draw(Graphics g)
-        {
-            g.FillRectangle(Brushes.Blue,new Rectangle(Point, Size));
-
-            if (Selected)
-            {
-                g.DrawRectangle(Pens.Red, new Rectangle(Point, Size));
-            }
-            
         }
 
         private static Rectangle CreateNewShape(Point start, Point end)

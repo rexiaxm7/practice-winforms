@@ -1,24 +1,24 @@
-﻿using DrawingShapes.Shapes;
+﻿using System.Drawing;
+using DrawingShapes.Shapes;
 
 namespace DrawingShapes.ShapeFactories
 {
-    public class DraggableSquareFactory : ISelectableShapeFactory
+    public class DraggableRoundFactory : ISelectableShapeFactory
     {
         private readonly string _name;
 
-        public DraggableSquareFactory(string name)
+        public DraggableRoundFactory(string name)
         {
             this._name = name;
         }
-
         public IShape Create(int x, int y)
         {
-            return new DraggableSquare(x, y, 50, 50);
+            return new DraggableRound(x, y, 50, 50);
         }
 
         public IShape Create(int x, int y, int width, int height)
         {
-            return new DraggableSquare(x, y, width, height);
+            return new DraggableRound(x, y, width, height);
         }
 
         public string Name()
